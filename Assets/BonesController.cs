@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class BonesController : MonoBehaviour {
+    [SerializeField]
+    private float speed = 1f;
 	private Rigidbody2D rigidBody2d;
-	private float vel = 1f;
 	private Animator animator;
 
 	// Use this for initialization
@@ -20,7 +21,7 @@ public class BonesController : MonoBehaviour {
 			}
 		} else if (currentAnimStateInfo.IsName("bones-walking")) {
 			// Nope!
-			Vector2 v = new Vector2 (vel, 0);
+			Vector2 v = new Vector2 (speed, 0);
 			rigidBody2d.velocity = v;
 		}
 	}
@@ -34,7 +35,7 @@ public class BonesController : MonoBehaviour {
 	}
 
 	void Flip() {
-		vel *= -1;
+		speed *= -1;
 		var s = transform.localScale;
 		s.x *= -1;
 		transform.localScale = s;
